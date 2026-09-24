@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sparrows — family tasks that actually get done</title>
+<meta name="description" content="Sparrows is a family task app: give each other chores, get reminded until they are done, prove it with a photo, earn points and swap them for rewards. No sign-up. iPhone.">
+<meta name="theme-color" content="#57AAF4">
+<link rel="canonical" href="https://sparrows.nghive.app/">
+<meta property="og:title" content="Sparrows — family tasks that actually get done">
+<meta property="og:description" content="Give each other tasks. Get reminded until they are done. Points, rewards and a calendar for the whole family.">
+<meta property="og:image" content="https://sparrows.nghive.app/assets/icon-1024.jpg">
+<meta property="og:url" content="https://sparrows.nghive.app/">
+<meta property="og:site_name" content="NG Hive">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/icon-180.jpg">
+<link rel="apple-touch-icon" href="assets/icon-180.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Sparrows: Family Tasks",
+"operatingSystem":"iOS","applicationCategory":"LifestyleApplication","url":"https://sparrows.nghive.app/",
+"image":"https://sparrows.nghive.app/assets/icon-1024.jpg",
+"description":"A family task app: give each other chores, get reminded until they are done, prove it with a photo, earn points and swap them for rewards.",
+"offers":{"@type":"Offer","price":"2.99","priceCurrency":"USD","description":"14 days free, then one purchase unlocks the whole family"},
+"publisher":{"@type":"Organization","name":"NG Hive","url":"https://nghive.app/"}}
+</script>
+<style>
+:root{
+  --sky:#57AAF4; --sky-deep:#2E7FD1; --sky-soft:#E3F1FF;
+  --sun:#FFC53D; --sun-soft:#FFF3D4;
+  --coral:#FF7A59; --coral-soft:#FFE7E0;
+  --mint:#35C08E; --mint-soft:#DDF6EC;
+  --lilac:#8B7BF0; --lilac-soft:#EDE9FF;
+  --rose:#FF6FA5; --rose-soft:#FFE4EF;
+  --ink:#1B1B1F; --ink-2:#5B6069; --line:rgba(27,27,31,.10);
+  --cream:#FFFBF4; --card:#fff;
+  --shadow:0 18px 44px rgba(28,45,70,.12);
+  --shadow-lg:0 30px 70px rgba(28,45,70,.20);
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 'Nunito',-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.baloo{font-family:'Baloo 2','Nunito',sans-serif;line-height:1.12;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,5.6vw,4rem);font-weight:800}
+h2{font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:700}
+p{margin:0;line-height:1.65}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(16px,4vw,28px)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation:none!important}
+}
+
+/* ─────────── шапка ─────────── */
+header.top{position:sticky;top:0;z-index:50;background:rgba(255,251,244,.86);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:.3s}
+header.top.stuck{border-bottom-color:var(--line);box-shadow:0 8px 24px rgba(28,45,70,.07)}
+.top .wrap{display:flex;align-items:center;gap:14px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Baloo 2';font-weight:800;font-size:1.3rem}
+.brand img{width:42px;height:42px;border-radius:12px;box-shadow:0 6px 16px rgba(46,127,209,.35)}
+.top nav{margin-left:auto;display:flex;gap:22px;font-weight:700;font-size:.95rem;color:var(--ink-2)}
+.top nav a:hover{color:var(--sky-deep)}
+@media (max-width:760px){.top nav{display:none}}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;font-family:'Baloo 2';font-weight:700;font-size:1.02rem;border:0;cursor:pointer;transition:.25s}
+.btn-primary{background:linear-gradient(135deg,var(--sun),var(--coral));color:#3A1D08;box-shadow:0 12px 26px rgba(255,122,89,.36)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(255,122,89,.45)}
+.btn-ghost{background:#fff;color:var(--ink);box-shadow:var(--shadow)}
+.btn-ghost:hover{transform:translateY(-3px)}
+.btn-sm{padding:10px 20px;font-size:.92rem}
+
+/* ─────────── герой ─────────── */
+.hero{position:relative;padding:clamp(40px,7vw,86px) 0 clamp(60px,8vw,110px);
+  background:linear-gradient(180deg,#9FD2FF 0%,#C7E6FF 45%,var(--cream) 100%);overflow:hidden}
+.hero .cloud{position:absolute;background:#fff;border-radius:999px;opacity:.75;filter:blur(.3px)}
+.hero .c1{width:190px;height:58px;top:12%;left:6%;animation:drift 26s linear infinite}
+.hero .c2{width:120px;height:40px;top:26%;right:10%;animation:drift 34s linear infinite reverse}
+.hero .c3{width:250px;height:70px;top:58%;left:-8%;animation:drift 44s linear infinite}
+@keyframes drift{from{transform:translateX(-40px)}50%{transform:translateX(40px)}to{transform:translateX(-40px)}}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--sky-deep);font-weight:800;
+  font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px;box-shadow:var(--shadow)}
+.hero h1{margin:18px 0 14px}
+.hero h1 em{font-style:normal;color:var(--sky-deep)}
+.hero .lead{font-size:1.14rem;color:#2B4257;max-width:52ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.hero-note{margin-top:14px;font-size:.92rem;color:#3C5A73}
+.hero-art{display:grid;place-items:center;position:relative}
+.hero-art .halo{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.9),rgba(255,255,255,0) 68%)}
+
+/* ─────────── макет телефона ─────────── */
+.phone{position:relative;width:300px;flex:none;border-radius:44px;background:#17171A;padding:9px;box-shadow:var(--shadow-lg)}
+.phone.small{width:250px;border-radius:38px}
+.screen{position:relative;border-radius:36px;background:#F6F5F2;overflow:hidden;height:600px;display:flex;flex-direction:column;
+  font-size:13px;color:#1B1B1F;line-height:1.35}
+.phone.small .screen{height:500px;border-radius:31px;font-size:11.5px}
+.screen .status{flex:none;display:flex;justify-content:space-between;align-items:center;padding:12px 20px 4px;font-weight:700;font-size:12px}
+.screen .island{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:84px;height:24px;background:#17171A;border-radius:14px;z-index:3}
+.screen .title{flex:none;font-family:'Baloo 2';font-weight:800;font-size:20px;padding:10px 16px 6px}
+.screen .body{flex:1;overflow:hidden;padding:0 14px 12px;display:flex;flex-direction:column;gap:10px}
+.screen .tabs{flex:none;display:flex;gap:6px;padding:6px 14px 2px}
+.screen .tabs span{flex:1;text-align:center;padding:7px 4px;border-radius:999px;background:#ECEAE5;font-weight:700;font-size:11.5px;color:#60646C}
+.screen .tabs span.on{background:#3D6BF2;color:#fff}
+.screen .sec{font-weight:800;font-size:11.5px;color:#60646C;text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.row{background:#fff;border-radius:16px;padding:11px 13px;display:flex;gap:10px;align-items:flex-start;box-shadow:0 2px 6px rgba(27,27,31,.05)}
+.row .who{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:14px;flex:none;background:#E5ECFF}
+.row b{display:block;font-weight:700;font-size:13px}
+.row small{color:#60646C;font-size:11.5px}
+.pill{display:inline-block;padding:3px 9px;border-radius:999px;font-weight:800;font-size:10.5px;letter-spacing:.02em}
+.pill.blue{background:#E5ECFF;color:#3D6BF2}
+.pill.green{background:#DDF3E8;color:#1F9D62}
+.pill.amber{background:#FCEFD6;color:#C97A0A}
+.pill.red{background:#FBE3E1;color:#D6403A}
+.screen .cta{flex:none;margin-top:auto;background:#3D6BF2;color:#fff;border-radius:14px;padding:13px;text-align:center;font-weight:800;font-size:14px}
+.screen .cta.green{background:#1F9D62}
+.screen .ghost{flex:none;background:#ECEAE5;color:#1B1B1F;border-radius:14px;padding:11px;text-align:center;font-weight:700;font-size:13px}
+.screen .tabbar{flex:none;display:flex;justify-content:space-around;padding:8px 0 12px;border-top:1px solid #E2DFD8;background:#fff;font-size:10px;font-weight:700;color:#8A8F98}
+.screen .tabbar span{display:flex;flex-direction:column;align-items:center;gap:2px}
+.screen .tabbar span i{font-style:normal;font-size:15px}
+.screen .tabbar span.on{color:#3D6BF2}
+.photo{height:96px;border-radius:14px;background:linear-gradient(135deg,#BFE3C6,#7FC08D);display:grid;place-items:center;font-size:28px}
+.field{background:#fff;border-radius:14px;padding:10px 12px;box-shadow:0 2px 6px rgba(27,27,31,.05)}
+.field small{display:block;color:#60646C;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.field b{font-weight:700;font-size:13px}
+.switch{width:38px;height:22px;border-radius:999px;background:#1F9D62;position:relative;flex:none}
+.switch::after{content:"";position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;background:#fff}
+.switch.off{background:#D5D2CB}
+.switch.off::after{left:2px;right:auto}
+
+/* ─────────── ленты-секции ─────────── */
+.band{padding:clamp(52px,7vw,92px) 0}
+.band.sky{background:var(--sky-soft)}
+.band.sun{background:var(--sun-soft)}
+.band.mint{background:var(--mint-soft)}
+.band.coral{background:var(--coral-soft)}
+.band.lilac{background:var(--lilac-soft)}
+.band.rose{background:var(--rose-soft)}
+.band .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.band.flip .shot{order:-1}
+.band .shot{display:grid;place-items:center}
+.tag{display:inline-block;font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:#fff;box-shadow:var(--shadow)}
+.band h2{margin:16px 0 14px}
+.band p{color:var(--ink-2);font-size:1.05rem}
+.ticks{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:11px}
+.ticks li{display:flex;gap:11px;align-items:flex-start;font-weight:600}
+.ticks li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:#fff;display:grid;place-items:center;font-weight:800;color:var(--mint);box-shadow:var(--shadow)}
+
+/* ─────────── как это работает ─────────── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,32px);margin-top:44px}
+.step{background:#fff;border-radius:26px;padding:28px 24px 30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.step b.num{position:absolute;top:-14px;right:10px;font-family:'Baloo 2';font-size:5rem;font-weight:800;opacity:.10}
+.step .emoji{font-size:2.1rem}
+.step h3{margin:12px 0 8px}
+.step p{color:var(--ink-2);font-size:.98rem}
+.center{text-align:center;max-width:760px;margin:0 auto}
+.center p{color:var(--ink-2);font-size:1.06rem;margin-top:14px}
+
+/* ─────────── галерея экранов ─────────── */
+.gallery{display:flex;gap:clamp(18px,3vw,34px);overflow-x:auto;padding:36px 4px 14px;scroll-snap-type:x mandatory}
+.gallery figure{margin:0;scroll-snap-align:center;flex:none;width:250px;text-align:center}
+.gallery figcaption{margin-top:14px;font-weight:700;font-size:.95rem}
+.gallery figcaption span{display:block;font-weight:600;color:var(--ink-2);font-size:.88rem;margin-top:3px}
+.gallery::-webkit-scrollbar{height:8px}
+.gallery::-webkit-scrollbar-thumb{background:#D8D3C9;border-radius:99px}
+
+/* ─────────── цена и вопросы ─────────── */
+.price{background:linear-gradient(135deg,var(--sky),var(--lilac));color:#fff;border-radius:34px;padding:clamp(30px,5vw,54px);text-align:center;box-shadow:var(--shadow-lg)}
+.price .num{font-family:'Baloo 2';font-size:clamp(3rem,8vw,4.6rem);font-weight:800;line-height:1}
+.price p{color:rgba(255,255,255,.92);max-width:48ch;margin:14px auto 0;font-size:1.06rem}
+.price .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+.price .chips span{background:rgba(255,255,255,.2);padding:9px 18px;border-radius:999px;font-weight:700;font-size:.95rem}
+.faq{display:grid;gap:12px;margin-top:36px}
+.faq details{background:#fff;border-radius:18px;padding:4px 22px;box-shadow:var(--shadow)}
+.faq summary{cursor:pointer;list-style:none;padding:17px 30px 17px 0;font-weight:800;font-family:'Baloo 2';font-size:1.06rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:1.5rem;color:var(--sky-deep)}
+.faq details[open] summary::after{content:"–"}
+.faq p{padding-bottom:18px;color:var(--ink-2)}
+
+/* ─────────── подвал ─────────── */
+footer{background:#1B2A3A;color:#D7E3F0;padding:52px 0 30px;margin-top:0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center}
+footer a{color:#fff;font-weight:700}
+footer a:hover{color:var(--sun)}
+footer .small{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:20px;margin-top:8px;font-size:.88rem;color:#9FB3C8;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+@media (max-width:860px){
+  .hero .wrap,.band .wrap{grid-template-columns:1fr}
+  .band.flip .shot{order:0}
+  .hero-art{order:-1}
+  .steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/icon-180.jpg" alt="Sparrows app icon">Sparrows</a>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#screens">Screens</a>
+      <a href="#rewards">Points</a>
+      <a href="#price">Price</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#price">Coming soon</a>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">🐦 For families with iPhones</span>
+      <h1>Family tasks that <em>actually get done</em></h1>
+      <p class="lead">Give each other tasks — parents to children, children to parents, everyone to everyone. Sparrows keeps reminding the right person until the job is finished, then hands out the points.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#how">See how it works</a>
+        <a class="btn btn-ghost" href="#screens">Look at the screens</a>
+      </div>
+      <p class="hero-note">14 days free · one purchase unlocks the whole family · no subscription</p>
+    </div>
+    <div class="hero-art">
+      <div class="halo"></div>
+      <!-- экран: список заданий -->
+      <div class="phone">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+          <div class="title">Tasks</div>
+          <div class="tabs"><span class="on">For me</span><span>From me</span><span>Everyone</span></div>
+          <div class="body">
+            <div class="sec">To do</div>
+            <div class="row"><span class="who">🧺</span><span><b>Take out the rubbish</b><small>From Mum · Today, 18:00</small></span><span class="pill amber" style="margin-left:auto">10 pts</span></div>
+            <div class="row"><span class="who">🪴</span><span><b>Water the plants</b><small>From Dad · Tomorrow</small></span><span class="pill blue" style="margin-left:auto">5 pts</span></div>
+            <div class="sec">Waiting for a check</div>
+            <div class="row"><span class="who">🛏️</span><span><b>Tidy your room</b><small>Sent for checking</small></span><span class="pill green" style="margin-left:auto">Sent</span></div>
+            <div class="sec">Done recently</div>
+            <div class="row" style="opacity:.6"><span class="who">🐕</span><span><b>Walk the dog</b><small>Yesterday, 19:20</small></span><span class="pill green" style="margin-left:auto">+15</span></div>
+          </div>
+          <div class="tabbar">
+            <span class="on"><i>📋</i>Tasks</span><span><i>📅</i>Calendar</span><span><i>👨‍👩‍👧</i>Family</span><span><i>🎁</i>Rewards</span><span><i>⚙️</i>Settings</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ КАК ЭТО РАБОТАЕТ ══════════ -->
+<section class="band" id="how">
+  <div class="wrap" style="display:block">
+    <div class="center reveal">
+      <span class="tag" style="background:var(--sun-soft)">Three taps to start</span>
+      <h2 style="margin-top:16px">Set it up before the kettle boils</h2>
+      <p>No account, no email, no password. One person creates the family, everyone else joins with a six-character code.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><b class="num">1</b><div class="emoji">🏡</div><h3>Create the family</h3><p>Type a family name and what everyone calls you. That is the whole sign-up.</p></div>
+      <div class="step reveal"><b class="num">2</b><div class="emoji">✉️</div><h3>Invite everyone</h3><p>Share a code or let them point a camera at it. Children get their own view, parents get the keys.</p></div>
+      <div class="step reveal"><b class="num">3</b><div class="emoji">✅</div><h3>Give the first task</h3><p>Who, when, how often to remind, how many points. Then let the app do the nagging.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ НАПОМИНАНИЯ ══════════ -->
+<section class="band sky">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="tag">🔔 Reminders</span>
+      <h2>It keeps asking, so you don't have to</h2>
+      <p>A task with a deadline is not a note that quietly expires. Sparrows nudges the person it was given to — every 30 minutes, every hour, whatever you chose — until the job is marked done.</p>
+      <ul class="ticks">
+        <li>Repeats stop the moment the task is finished</li>
+        <li>Quiet hours per person: nobody gets buzzed at 2 a.m.</li>
+        <li>Children can set reminders for parents too — and parents can cap how often</li>
+        <li>Anyone can mute a single task without muting the app</li>
+      </ul>
+    </div>
+    <div class="shot reveal">
+      <div class="phone">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+          <div class="title">New task</div>
+          <div class="body">
+            <div class="field"><small>What needs doing?</small><b>Take out the rubbish</b></div>
+            <div class="field"><small>Who</small><b>🧒 Pete</b></div>
+            <div class="field"><small>Deadline</small><b>Today, 18:00</b></div>
+            <div class="field" style="display:flex;align-items:center;gap:10px"><span style="flex:1"><small>Remind until done</small><b>Every 30 min</b></span><span class="switch"></span></div>
+            <div class="field" style="display:flex;align-items:center;gap:10px"><span style="flex:1"><small>I want to check it</small><b>Photo, then my approval</b></span><span class="switch"></span></div>
+            <div class="field"><small>Points for doing it</small><b>10 pts</b></div>
+            <div class="cta">Give the task</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ФОТО И ПРОВЕРКА ══════════ -->
+<section class="band mint flip">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="tag">📸 Proof and review</span>
+      <h2>“I did it” — show me</h2>
+      <p>Turn on the check and a finished task does not close on its own: it comes to you with a photo. Accept it, or send it back with one line about what is still wrong.</p>
+      <ul class="ticks">
+        <li>A photo is optional — switch it off for tasks that need no proof</li>
+        <li>Send-backs carry a note: “The bin is still half full”</li>
+        <li>Points land only when the task is truly closed</li>
+        <li>Comments live inside the task, so nothing gets lost in chat</li>
+      </ul>
+    </div>
+    <div class="shot reveal">
+      <div class="phone">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+          <div class="title">Take out the rubbish</div>
+          <div class="body">
+            <div class="row"><span class="who">👩</span><span><b>From Mum</b><small>Today, 18:00 · 10 pts</small></span><span class="pill amber" style="margin-left:auto">Being checked</span></div>
+            <div class="photo">🗑️</div>
+            <div class="field"><small>Note from Pete</small><b>Also washed the bin, it smelled.</b></div>
+            <div style="display:flex;gap:10px">
+              <div class="cta green" style="flex:1;margin:0">Accept</div>
+              <div class="ghost" style="flex:1;padding:13px">Send back</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ БАЛЛЫ И НАГРАДЫ ══════════ -->
+<section class="band sun" id="rewards">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="tag">🎁 Points and rewards</span>
+      <h2>Pocket money, film night, one hour of anything</h2>
+      <p>Every task can be worth points. Points pile up, and the family decides what they buy. A child asks for a reward, a parent approves it — and the balance does the arguing instead of you.</p>
+      <ul class="ticks">
+        <li>Rewards are yours to invent: screen time, a pizza Friday, a trip to the cinema</li>
+        <li>Parents can add or take away points by hand, with a reason attached</li>
+        <li>Everyone sees where their points came from</li>
+      </ul>
+    </div>
+    <div class="shot reveal">
+      <div class="phone">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+          <div class="title">Rewards</div>
+          <div class="body">
+            <div class="field" style="background:linear-gradient(135deg,#FFE29A,#FFC53D)"><small>Your points</small><b style="font-size:26px;font-family:'Baloo 2'">120</b></div>
+            <div class="row"><span class="who">🍿</span><span><b>Film night</b><small>100 pts</small></span><span class="pill green" style="margin-left:auto">Get it</span></div>
+            <div class="row"><span class="who">🎮</span><span><b>Extra hour of games</b><small>50 pts</small></span><span class="pill green" style="margin-left:auto">Get it</span></div>
+            <div class="row"><span class="who">🍕</span><span><b>Pizza Friday</b><small>200 pts</small></span><span class="pill blue" style="margin-left:auto">80 more</span></div>
+            <div class="sec">Recent points</div>
+            <div class="row" style="opacity:.75"><span class="who">✅</span><span><b>Walk the dog</b><small>Yesterday</small></span><span class="pill green" style="margin-left:auto">+15</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ КАЛЕНДАРЬ ══════════ -->
+<section class="band lilac flip">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="tag">📅 Calendar</span>
+      <h2>The week, at a glance</h2>
+      <p>Switch between day, week and month to see what is landing on whom. Useful the evening before, when someone insists they have nothing to do.</p>
+      <ul class="ticks">
+        <li>Colour by status: to do, waiting for a check, done, overdue</li>
+        <li>Tap any day to open its tasks</li>
+        <li>Same tasks, just a different way to look at them</li>
+      </ul>
+    </div>
+    <div class="shot reveal">
+      <div class="phone">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+          <div class="title">Calendar</div>
+          <div class="tabs"><span>Day</span><span class="on">Week</span><span>Month</span></div>
+          <div class="body">
+            <div class="row" style="justify-content:space-between;font-weight:700;font-size:11px;color:#60646C;padding:8px 10px">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span style="color:#3D6BF2">Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+            <div class="row"><span class="who">🧺</span><span><b>Take out the rubbish</b><small>Thu, 18:00 · Pete</small></span><span class="pill amber" style="margin-left:auto">To do</span></div>
+            <div class="row"><span class="who">📚</span><span><b>Maths homework</b><small>Thu, 20:00 · Mary</small></span><span class="pill blue" style="margin-left:auto">To do</span></div>
+            <div class="row"><span class="who">🚗</span><span><b>Book the car service</b><small>Fri · Dad</small></span><span class="pill red" style="margin-left:auto">Overdue</span></div>
+            <div class="row" style="opacity:.65"><span class="who">🧹</span><span><b>Hoover the hall</b><small>Wed · Pete</small></span><span class="pill green" style="margin-left:auto">Done</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ГАЛЕРЕЯ ══════════ -->
+<section class="band" id="screens">
+  <div class="wrap" style="display:block">
+    <div class="center reveal">
+      <span class="tag" style="background:var(--rose-soft)">More screens</span>
+      <h2 style="margin-top:16px">Everything is where you would look for it</h2>
+      <p>Swipe through the app: setting up, the family, a task from the child's side, and what a parent sees.</p>
+    </div>
+    <div class="gallery reveal">
+      <figure>
+        <div class="phone small">
+          <div class="screen">
+            <div class="island"></div>
+            <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+            <div class="body" style="justify-content:center;text-align:center;gap:14px">
+              <div style="font-size:44px">🐦</div>
+              <div style="font-family:'Baloo 2';font-weight:800;font-size:22px">Sparrows</div>
+              <p style="color:#60646C;font-size:12px">Give each other tasks. Get reminded until they are done.</p>
+              <div class="cta" style="margin-top:20px">Create a family</div>
+              <div class="ghost">I have an invite code</div>
+              <small style="color:#8A8F98;font-size:10.5px">No sign-up, no passwords. Just your name.</small>
+            </div>
+          </div>
+        </div>
+        <figcaption>First launch<span>A name is all it asks for</span></figcaption>
+      </figure>
+      <figure>
+        <div class="phone small">
+          <div class="screen">
+            <div class="island"></div>
+            <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+            <div class="title">Invite</div>
+            <div class="body" style="text-align:center">
+              <div class="field" style="padding:18px"><small>Invite code</small><b style="font-size:28px;letter-spacing:.14em;font-family:'Baloo 2'">K7P2QM</b></div>
+              <div style="height:96px;border-radius:14px;background:#fff;display:grid;place-items:center;font-size:44px">▨</div>
+              <small style="color:#60646C;font-size:11px">Or point their iPhone camera at this code</small>
+              <div class="cta">Share</div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Inviting the family<span>Six characters, valid for a week</span></figcaption>
+      </figure>
+      <figure>
+        <div class="phone small">
+          <div class="screen">
+            <div class="island"></div>
+            <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+            <div class="title">Take out the rubbish</div>
+            <div class="body">
+              <div class="row"><span class="who">👩</span><span><b>From Mum</b><small>Today, 18:00</small></span><span class="pill amber" style="margin-left:auto">10 pts</span></div>
+              <div class="field"><small>Details</small><b>The green bin, not the black one.</b></div>
+              <div class="ghost">📷 Add a photo</div>
+              <div class="field"><small>Reminders for me</small><b>Every 30 min · Mute</b></div>
+              <div class="cta green">Done!</div>
+            </div>
+          </div>
+        </div>
+        <figcaption>A task, from the child's side<span>One big button, no hunting</span></figcaption>
+      </figure>
+      <figure>
+        <div class="phone small">
+          <div class="screen">
+            <div class="island"></div>
+            <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+            <div class="title">Family</div>
+            <div class="body">
+              <div class="row"><span class="who">👩</span><span><b>Mum</b><small>Parent · you</small></span></div>
+              <div class="row"><span class="who">👨</span><span><b>Dad</b><small>Parent</small></span><span class="pill red" style="margin-left:auto">Alerts off</span></div>
+              <div class="row"><span class="who">🧒</span><span><b>Pete</b><small>Child</small></span><span class="pill amber" style="margin-left:auto">120 pts</span></div>
+              <div class="row"><span class="who">👧</span><span><b>Mary</b><small>Child</small></span><span class="pill amber" style="margin-left:auto">40 pts</span></div>
+              <div class="cta">Invite someone</div>
+            </div>
+          </div>
+        </div>
+        <figcaption>The family<span>Who is in, and who muted their phone</span></figcaption>
+      </figure>
+      <figure>
+        <div class="phone small">
+          <div class="screen">
+            <div class="island"></div>
+            <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+            <div class="title">Settings</div>
+            <div class="body">
+              <div class="field"><small>My profile</small><b>Mum · Parent</b></div>
+              <div class="field"><small>Language</small><b>Same as the phone</b></div>
+              <div class="field" style="display:flex;align-items:center;gap:10px"><span style="flex:1"><small>Repeat reminders from children</small><b>No more than every 2 h</b></span><span class="switch"></span></div>
+              <div class="field"><small>Protect my profile</small><b> Apple ID linked</b></div>
+              <div class="field"><small>Access</small><b>Unlocked forever for the family</b></div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Settings for a parent<span>Including a cap on children's nagging</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ПРИВАТНОСТЬ ══════════ -->
+<section class="band coral">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="tag">🔒 Private by default</span>
+      <h2>A task is between the two of you</h2>
+      <p>Every task is visible to the person who gave it and the person who has to do it — nobody else, not even the other parent. If you want it shared, there is a switch for that, and children have it too.</p>
+      <ul class="ticks">
+        <li>The rule lives in the database, not in the app's screens</li>
+        <li>A teenager can give a parent a task without the whole family reading it</li>
+        <li>No sign-up means no email list, no password to leak</li>
+        <li>Lost the phone? Another parent hands your profile back, or Apple ID does it for you</li>
+      </ul>
+    </div>
+    <div class="shot reveal">
+      <div class="phone">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+          <div class="title">New task</div>
+          <div class="body">
+            <div class="field"><small>What needs doing?</small><b>Book the dentist for Mary</b></div>
+            <div class="field"><small>Who</small><b>👨 Dad</b></div>
+            <div class="field" style="display:flex;align-items:center;gap:10px"><span style="flex:1"><small>Let the other parent see it</small><b>Off — private</b></span><span class="switch off"></span></div>
+            <div class="row" style="background:#E5ECFF"><span class="who" style="background:#fff">🔒</span><span><b>Private</b><small>Only the people in this task see it</small></span></div>
+            <div class="cta">Give the task</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ЯЗЫКИ И SHOPPING ══════════ -->
+<section class="band rose flip">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="tag">🌍 Six languages</span>
+      <h2>Everyone reads it in their own</h2>
+      <p>English, Russian, French, German, Spanish and Portuguese — each phone follows its own setting, and so do the notifications. A grandmother in another country gets her reminders in her language.</p>
+      <ul class="ticks">
+        <li>Push notifications are written in the language of whoever receives them</li>
+        <li>Anyone can override the language for their own phone</li>
+        <li>Distances, dates and times follow the phone's region</li>
+      </ul>
+      <p style="margin-top:24px">A task can also carry a shopping list from our other app: paste a <a href="https://shopping.nghive.app/" style="color:var(--sky-deep);font-weight:800">ShopPing</a> link into a task, and “buy bread” opens the real list with the items in it.</p>
+    </div>
+    <div class="shot reveal">
+      <div class="phone">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+          <div class="title">Groceries on the way home</div>
+          <div class="body">
+            <div class="row"><span class="who">👩</span><span><b>From Mum</b><small>Today, 19:00 · 15 pts</small></span></div>
+            <div class="row" style="background:#FFF3D4"><span class="who" style="background:#fff">🛒</span><span><b>Open the shopping list</b><small>4 items · ShopPing</small></span></div>
+            <div class="field"><small>Details</small><b>Bread, milk, the yoghurt Mary likes.</b></div>
+            <div class="ghost">📷 Add a photo</div>
+            <div class="cta green">Done!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ЦЕНА ══════════ -->
+<section class="band" id="price">
+  <div class="wrap" style="display:block">
+    <div class="price reveal">
+      <span class="baloo" style="font-size:1.1rem;font-weight:700;opacity:.9">Two weeks free, then</span>
+      <div class="num">$2.99</div>
+      <p>One purchase, once, for the whole family — every parent, every child, every phone. Not a subscription, not per person, nothing renews.</p>
+      <div class="chips">
+        <span>14 days free</span><span>No account</span><span>No ads</span><span>No subscription</span>
+      </div>
+      <p style="margin-top:26px;font-weight:700">Coming soon to the App Store — iPhone first, Android later.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════ -->
+<section class="band sky" id="faq">
+  <div class="wrap" style="display:block">
+    <div class="center reveal"><span class="tag">Questions</span><h2 style="margin-top:16px">Short answers</h2></div>
+    <div class="faq reveal">
+      <details><summary>Do the children need their own Apple ID?</summary><p>No. A child opens the app, types the invite code and their name, and they are in. No email, no password, nothing to remember.</p></details>
+      <details><summary>Can children give tasks to parents?</summary><p>Yes, and they usually do within the first hour. Parents can decide how often a child's reminders may repeat — “as they set them”, “no more than every two hours”, or “no repeats”.</p></details>
+      <details><summary>What happens when a phone is lost?</summary><p>The profile stays with the family, not with the phone. Another parent can hand it back to a new phone with all tasks and points. A parent who linked their Apple ID can also restore it alone.</p></details>
+      <details><summary>Does everyone see every task?</summary><p>No. A task is private between the author and the people it is for. Sharing it with the other parents is a switch, off by default — and children have that switch too.</p></details>
+      <details><summary>Will it nag at night?</summary><p>No. Everyone sets their own quiet hours, and repeat reminders wait until those are over.</p></details>
+      <details><summary>Is one purchase really enough for the whole family?</summary><p>Yes. Whoever buys it unlocks the family; everybody else just keeps using the app. There is nothing to renew and nothing to cancel.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top" style="color:#fff"><img src="assets/icon-180.jpg" alt="">Sparrows</a>
+    <span>Questions, ideas, bugs: <a href="mailto:contact@nghive.app">contact@nghive.app</a></span>
+    <span class="small">
+      <span>An app by <a href="https://nghive.app/" target="_blank" rel="noopener">NG Hive ↗</a></span>
+      <span>© <span id="year">2026</span> NG Hive · Sparrows: Family Tasks</span>
+    </span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var header = document.querySelector('header.top');
+  addEventListener('scroll', function () {
+    header.classList.toggle('stuck', scrollY > 10);
+  }, { passive: true });
+
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = [].slice.call(document.querySelectorAll('.reveal'));
+  if ('IntersectionObserver' in window && !reduced) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e, i) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        setTimeout(function () { el.classList.add('in'); }, i * 80);
+        io.unobserve(el);
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -60px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
