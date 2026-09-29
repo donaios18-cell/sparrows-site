@@ -191,6 +191,18 @@ header.top.stuck{border-bottom-color:var(--line);box-shadow:0 8px 24px rgba(28,4
 .faq details[open] summary::after{content:"–"}
 .faq p{padding-bottom:18px;color:var(--ink-2)}
 
+/* ─────────── кнопки магазинов ─────────── */
+.stores{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.center .stores{justify-content:center;margin-top:30px}
+.store-btn{display:inline-flex;align-items:center;gap:11px;min-width:196px;padding:11px 22px;border-radius:18px;background:var(--ink);color:#fff;text-align:left;transition:.25s}
+a.store-btn:hover{transform:translateY(-3px)}
+.store-btn svg{flex:none}
+.store-btn .kv{display:flex;flex-direction:column;line-height:1.2}
+.store-btn .kv .small{font-size:.72rem;font-weight:700;opacity:.8}
+.store-btn .kv .big{font-family:'Baloo 2';font-weight:700;font-size:1.12rem}
+.store-btn.disabled{background:rgba(255,255,255,.72);border:1.5px dashed rgba(27,27,31,.28);color:var(--ink-2);cursor:default}
+.store-btn.disabled svg{opacity:.6}
+
 /* ─────────── подвал ─────────── */
 footer{background:#1B2A3A;color:#D7E3F0;padding:52px 0 30px;margin-top:0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center}
@@ -234,6 +246,18 @@ footer .small{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:
       <div class="hero-cta">
         <a class="btn btn-primary" href="#how">See how it works</a>
         <a class="btn btn-ghost" href="#screens">Look at the screens</a>
+      </div>
+      <div class="stores">
+        <!-- App Store: no link yet — swap this span for a link once the app is live -->
+        <span class="store-btn disabled" aria-disabled="true" title="Coming soon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.463 2.096-1.184 2.883-.796.83-2.083 1.474-3.13 1.474-.11-1.11.464-2.223 1.183-2.94.796-.83 2.148-1.443 3.131-1.417zM20.62 17.104c-.472 1.09-.694 1.577-1.297 2.548-.842 1.35-2.03 3.036-3.501 3.05-1.303.014-1.64-.85-3.41-.84-1.77.01-2.14.855-3.443.841-1.472-.014-2.596-1.53-3.438-2.878-2.36-3.78-2.607-8.22-1.15-10.582.958-1.535 2.518-2.432 3.987-2.432 1.494 0 2.435.85 3.673.85 1.203 0 1.933-.85 3.674-.85 1.32 0 2.717.72 3.717 1.964-3.27 1.79-2.74 6.463.188 8.329z"/></svg>
+          <span class="kv"><span class="small">Coming soon to</span><span class="big">App Store</span></span>
+        </span>
+        <!-- Google Play: no link yet — swap this span for a link once the app is live -->
+        <span class="store-btn disabled" aria-disabled="true" title="Coming soon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.6c-.4.4-.6.9-.6 1.5v15.8c0 .6.2 1.1.6 1.5l.2.1L13 12.4v-.2L3.8 2.5l-.2.1zM16 15.3l-3-3v-.2l3-3 3.5 2c1 .6 1 1.6 0 2.2l-3.5 2zM4.4 21.5 13.7 13l2.3 2.3-10.8 6c-.3.2-.7.3-1 .2l.2 0zM13.7 11l-9.3-9.4c.3-.1.6 0 .9.2L16 8l-2.3 3z"/></svg>
+          <span class="kv"><span class="small">Coming soon to</span><span class="big">Google Play</span></span>
+        </span>
       </div>
       <p class="hero-note">14 days free · one purchase unlocks the whole family · no subscription</p>
     </div>
@@ -607,6 +631,28 @@ footer .small{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:
       <details><summary>Does everyone see every task?</summary><p>No. A task is private between the author and the people it is for. Sharing it with the other parents is a switch, off by default — and children have that switch too.</p></details>
       <details><summary>Will it nag at night?</summary><p>No. Everyone sets their own quiet hours, and repeat reminders wait until those are over.</p></details>
       <details><summary>Is one purchase really enough for the whole family?</summary><p>Yes. Whoever buys it unlocks the family; everybody else just keeps using the app. There is nothing to renew and nothing to cancel.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ СКАЧАТЬ ══════════ -->
+<section class="band" id="get">
+  <div class="wrap" style="display:block">
+    <div class="center reveal">
+      <span class="tag" style="background:var(--sun-soft)">Coming soon</span>
+      <h2 style="margin-top:16px">Get Sparrows</h2>
+      <div class="stores">
+        <!-- App Store: no link yet — swap this span for a link once the app is live -->
+        <span class="store-btn disabled" aria-disabled="true" title="Coming soon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.463 2.096-1.184 2.883-.796.83-2.083 1.474-3.13 1.474-.11-1.11.464-2.223 1.183-2.94.796-.83 2.148-1.443 3.131-1.417zM20.62 17.104c-.472 1.09-.694 1.577-1.297 2.548-.842 1.35-2.03 3.036-3.501 3.05-1.303.014-1.64-.85-3.41-.84-1.77.01-2.14.855-3.443.841-1.472-.014-2.596-1.53-3.438-2.878-2.36-3.78-2.607-8.22-1.15-10.582.958-1.535 2.518-2.432 3.987-2.432 1.494 0 2.435.85 3.673.85 1.203 0 1.933-.85 3.674-.85 1.32 0 2.717.72 3.717 1.964-3.27 1.79-2.74 6.463.188 8.329z"/></svg>
+          <span class="kv"><span class="small">Coming soon to</span><span class="big">App Store</span></span>
+        </span>
+        <!-- Google Play: no link yet — swap this span for a link once the app is live -->
+        <span class="store-btn disabled" aria-disabled="true" title="Coming soon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.6c-.4.4-.6.9-.6 1.5v15.8c0 .6.2 1.1.6 1.5l.2.1L13 12.4v-.2L3.8 2.5l-.2.1zM16 15.3l-3-3v-.2l3-3 3.5 2c1 .6 1 1.6 0 2.2l-3.5 2zM4.4 21.5 13.7 13l2.3 2.3-10.8 6c-.3.2-.7.3-1 .2l.2 0zM13.7 11l-9.3-9.4c.3-.1.6 0 .9.2L16 8l-2.3 3z"/></svg>
+          <span class="kv"><span class="small">Coming soon to</span><span class="big">Google Play</span></span>
+        </span>
+      </div>
     </div>
   </div>
 </section>
