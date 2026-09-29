@@ -64,7 +64,7 @@ footer a{color:#fff}
       <span><a href="/">← Back to the site</a></span>
     </div>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 24 September 2026</p>
+    <p class="updated">Last updated: 29 September 2026</p>
   </div>
 </div>
 
@@ -84,8 +84,8 @@ footer a{color:#fff}
   <p>Sparrows (“the app”) is made by <strong>NG Hive LLC</strong>, an independent studio in the United States. This policy explains exactly what the app stores, where, who can see it and how to get rid of it. Questions: <a href="mailto:contact@nghive.app">contact@nghive.app</a>.</p>
 
   <h2>There is no sign-up</h2>
-  <p>Sparrows has no accounts in the usual sense. You never give us an email address or a password. When the app first opens, it creates an anonymous identity for that phone on our server, and the key to it is kept in the iOS Keychain on your device. Inside the family you are a <em>member</em> — a name and an avatar you choose yourself.</p>
-  <p>You may optionally link Sign in with Apple to protect your profile. If you do, we receive <strong>only Apple's stable identifier</strong> for your Apple ID — not your name, not your email address, not anything else. It exists so that you can get your own profile back on a new phone.</p>
+  <p>Sparrows has no accounts in the usual sense. You never give us an email address or a password. When the app first opens, it creates an anonymous identity for that phone on our server, and the key to it is kept in your phone's secure storage — the Keychain on iPhone, the Keystore on Android. Inside the family you are a <em>member</em> — a name and an avatar you choose yourself.</p>
+  <p>On iPhone, you may optionally link Sign in with Apple to protect your profile. If you do, we receive <strong>only Apple's stable identifier</strong> for your Apple ID — not your name, not your email address, not anything else. It exists so that you can get your own profile back on a new phone.</p>
 
   <h2>What is stored on our server</h2>
   <table>
@@ -99,7 +99,7 @@ footer a{color:#fff}
     <tr><td>Invite codes</td><td>To let people join; they expire on their own</td></tr>
     <tr><td>Push token of the device and its platform</td><td>To deliver notifications</td></tr>
     <tr><td>Apple's stable identifier, only if you linked Sign in with Apple</td><td>To restore your profile on a new phone</td></tr>
-    <tr><td>For a purchase: Apple's transaction identifier, the product identifier and whether it came from the sandbox or the real store</td><td>To confirm the family is unlocked and to restore the purchase later</td></tr>
+    <tr><td>For a purchase: the store's receipt number (Apple's transaction identifier or the Google Play order number), the product identifier and whether it was a test purchase or a real one</td><td>To confirm the family is unlocked and to restore the purchase later</td></tr>
     <tr><td>If you paste a shopping-list link from our ShopPing app into a task, that link is stored as part of the task</td><td>So the task can open the list</td></tr>
   </table>
   <p>The server is <strong>Supabase</strong>, hosted in the United States. Everything travels over encrypted connections.</p>
@@ -114,11 +114,11 @@ footer a{color:#fff}
   </ul>
 
   <h2>On your phone</h2>
-  <p>The key to your anonymous identity lives in the iOS Keychain. The app also keeps a small technical log on the device to help with support; it stays on your phone unless you decide to send it to us.</p>
+  <p>The key to your anonymous identity lives in your phone's secure storage (Keychain on iPhone, Keystore on Android). The app also keeps a small technical log on the device to help with support; it stays on your phone unless you decide to send it to us.</p>
 
   <h2>Notifications</h2>
   <p>A notification contains the name of the person who gave or finished the task and the task's title — the same text you would see inside the app. Since it can appear on a lock screen, keep that in mind when naming a delicate task.</p>
-  <p>Notifications are delivered through <strong>Expo's push service</strong> and then <strong>Apple's Push Notification service</strong>. Undelivered items are removed from our queue after seven days.</p>
+  <p>Notifications are delivered through <strong>Expo's push service</strong> and then <strong>Apple's Push Notification service</strong> on iPhone or <strong>Google's Firebase Cloud Messaging</strong> on Android. Undelivered items are removed from our queue after seven days.</p>
 
   <h2>Who can see what</h2>
   <ul>
@@ -139,13 +139,14 @@ footer a{color:#fff}
     <li>When the <strong>last member leaves</strong>, the family itself is deleted along with its tasks, photos, rewards and history.</li>
     <li>Or simply write to us and we will delete the family for you.</li>
   </ul>
-  <p>We keep the record of a purchase after that, because Apple ties it to your Apple ID and it is what lets you restore the purchase later.</p>
+  <p>We keep the record of a purchase after that, because the store ties it to your Apple ID or Google account and it is what lets you restore the purchase later.</p>
 
   <h2>Who else is involved</h2>
   <ul>
     <li><strong>Supabase</strong> — database, private file storage and the server functions, in the United States.</li>
-    <li><strong>Expo</strong> — relays push notifications to Apple.</li>
-    <li><strong>Apple</strong> — delivers notifications, handles purchases, and provides Sign in with Apple if you use it.</li>
+    <li><strong>Expo</strong> — relays push notifications to Apple and Google.</li>
+    <li><strong>Apple</strong> — on iPhone: delivers notifications, handles purchases, and provides Sign in with Apple if you use it.</li>
+    <li><strong>Google</strong> — on Android: delivers notifications through Firebase Cloud Messaging and handles purchases through Google Play. Our server asks Google Play to confirm each Android purchase before unlocking the family.</li>
   </ul>
   <p>That is the entire list. There are no advertising or analytics companies in it.</p>
 
