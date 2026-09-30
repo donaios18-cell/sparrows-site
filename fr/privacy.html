@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité — Sparrows</title>
+<meta name="description" content="Ce que Sparrows enregistre, où c'est conservé, qui peut le voir et comment le supprimer. Pas de pub, pas d'outils d'analyse, pas de pistage.">
+<meta name="theme-color" content="#57AAF4">
+<link rel="canonical" href="https://sparrows.nghive.app/fr/privacy">
+<meta property="og:title" content="Politique de confidentialité — Sparrows">
+<meta property="og:description" content="Ce que Sparrows enregistre, où c'est conservé, qui peut le voir et comment le supprimer.">
+<meta property="og:image" content="https://sparrows.nghive.app/assets/icon-1024.jpg">
+<meta property="og:url" content="https://sparrows.nghive.app/fr/privacy">
+<meta property="og:site_name" content="NG Hive">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/icon-180.jpg">
+<link rel="apple-touch-icon" href="../assets/icon-180.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#57AAF4;--sky-deep:#2E7FD1;--sky-soft:#E3F1FF;--mint-soft:#DDF6EC;--mint:#35C08E;
+  --ink:#1B1B1F;--ink-2:#5B6069;--line:rgba(27,27,31,.10);--cream:#FFFBF4;--shadow:0 18px 44px rgba(28,45,70,.12)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.7 'Nunito',-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Baloo 2','Nunito',sans-serif;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,4.6vw,3rem);font-weight:800}
+h2{font-size:1.5rem;font-weight:800;margin:44px 0 14px}
+h3{font-size:1.12rem;font-weight:700;margin:26px 0 8px}
+p,li{color:var(--ink-2)}
+p{margin:0 0 14px}
+ul{margin:0 0 16px;padding-left:22px}
+li{margin-bottom:8px}
+a{color:var(--sky-deep);font-weight:700}
+strong{color:var(--ink)}
+.wrap{max-width:760px;margin:0 auto;padding:0 clamp(16px,4vw,28px)}
+.top{background:linear-gradient(180deg,#9FD2FF,#C7E6FF 60%,var(--cream));padding:26px 0 46px}
+.top .bar{display:flex;align-items:center;gap:12px;margin-bottom:34px}
+.top .bar img{width:40px;height:40px;border-radius:12px;box-shadow:0 6px 16px rgba(46,127,209,.35)}
+.top .bar a{font-family:'Baloo 2';font-weight:800;font-size:1.25rem;color:var(--ink);text-decoration:none}
+.top .bar span{margin-left:auto;font-weight:700}
+.updated{color:#2B4257;font-weight:700;margin-top:12px}
+main{padding:10px 0 60px}
+.card{background:#fff;border-radius:22px;padding:24px 26px;box-shadow:var(--shadow);margin:0 0 26px}
+.card.mint{background:var(--mint-soft)}
+.card h3{margin-top:0}
+.card ul{margin-bottom:0}
+table{width:100%;border-collapse:collapse;margin:0 0 18px;font-size:.95rem}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:800;color:var(--ink);background:var(--sky-soft)}
+td{color:var(--ink-2)}
+footer{background:#1B2A3A;color:#D7E3F0;padding:34px 0;font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+footer a{color:#fff}
+</style>
+<link rel="alternate" hreflang="en" href="https://sparrows.nghive.app/privacy">
+<link rel="alternate" hreflang="es" href="https://sparrows.nghive.app/es/privacy">
+<link rel="alternate" hreflang="de" href="https://sparrows.nghive.app/de/privacy">
+<link rel="alternate" hreflang="fr" href="https://sparrows.nghive.app/fr/privacy">
+<link rel="alternate" hreflang="ru" href="https://sparrows.nghive.app/ru/privacy">
+<link rel="alternate" hreflang="pt" href="https://sparrows.nghive.app/pt/privacy">
+<link rel="alternate" hreflang="x-default" href="https://sparrows.nghive.app/privacy">
+<style>
+  .translation-note { font-size: 13px; line-height: 1.5; opacity: .8; margin: 10px 0 0; }
+  .translation-note a { font-weight: inherit; }
+  /* long words on narrow screens */
+  h1, h2 { hyphens: auto; overflow-wrap: break-word; }
+  .top .bar span { min-width: 0; text-align: right; line-height: 1.25; }
+  /* language picker */
+  .lang-pick { position: relative; flex: none; }
+  .lang-pick summary {
+    list-style: none; cursor: pointer; user-select: none;
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 6px 10px; border: 1px solid rgba(27,27,31,.10); border-radius: 999px;
+    font: 700 12px/1.2 inherit; letter-spacing: .06em; color: var(--ink);
+  }
+  .lang-pick summary::-webkit-details-marker { display: none; }
+  .lang-pick summary::after { content: ""; width: 5px; height: 5px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: translateY(-2px) rotate(45deg); opacity: .6; }
+  .lang-pick summary:hover, .lang-pick[open] summary { border-color: var(--sky-deep); }
+  .lang-pick ul {
+    position: absolute; right: 0; top: calc(100% + 8px); z-index: 60;
+    margin: 0; padding: 6px; list-style: none; min-width: 150px;
+    background: #fff; border: 1px solid rgba(27,27,31,.10); border-radius: 16px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .16);
+  }
+  .lang-pick li { margin: 0; }
+  .lang-pick a {
+    display: block; padding: 7px 12px; border-radius: calc(16px - 4px);
+    color: var(--ink); text-decoration: none; border: 0; font-weight: 500; font-size: 14.5px; letter-spacing: 0; text-transform: none;
+  }
+  .lang-pick a:hover { background: color-mix(in srgb, var(--sky-deep) 12%, transparent); }
+  .lang-pick a[aria-current] { color: var(--sky-deep); font-weight: 700; }
+</style>
+<script src="../lang.js" defer></script>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <div class="bar">
+      <img src="../assets/icon-180.jpg" alt=""><a href="./">Sparrows</a>
+      <span><a href="./">← Retour au site</a></span>
+      <details class="lang-pick">
+        <summary aria-label="Langue">FR</summary>
+        <ul>
+          <li><a href="../privacy" lang="en" hreflang="en">English</a></li>
+          <li><a href="../es/privacy" lang="es" hreflang="es">Español</a></li>
+          <li><a href="../de/privacy" lang="de" hreflang="de">Deutsch</a></li>
+          <li><a href="privacy" lang="fr" hreflang="fr" aria-current="page">Français</a></li>
+          <li><a href="../ru/privacy" lang="ru" hreflang="ru">Русский</a></li>
+          <li><a href="../pt/privacy" lang="pt" hreflang="pt">Português</a></li>
+        </ul>
+      </details>
+    </div>
+    <h1>Politique de confidentialité</h1>
+    <p class="updated">Dernière mise à jour : 29 septembre 2026</p>
+    <p class="translation-note">Cette traduction t'est fournie pour ta commodité. En cas de divergence avec la version anglaise, cette dernière prévaut. <a href="../privacy">Version anglaise</a></p>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+
+  <div class="card mint">
+    <h3>En bref</h3>
+    <ul>
+      <li>Pas de pub, pas d'outils d'analyse, pas de pistage, et rien n'est jamais vendu ni partagé à des fins marketing.</li>
+      <li>Pas d'adresse e-mail, pas de mot de passe, pas de numéro de téléphone, pas de contacts, pas de localisation.</li>
+      <li>Ce que nous gardons, c'est ce dont l'app a besoin pour fonctionner : les prénoms que tu saisis, les tâches que vous vous donnez, les photos que tu joins, les points et les récompenses.</li>
+      <li>Quitte la famille, et tes données sont supprimées. Quand la dernière personne part, la famille et tout ce qu'elle contient disparaissent avec elle.</li>
+    </ul>
+  </div>
+
+  <p>Sparrows (« l'app ») est conçue par <strong>NG Hive LLC</strong>, un studio indépendant basé aux États-Unis. Cette politique explique précisément ce que l'app enregistre, où, qui peut le voir et comment s'en débarrasser. Questions : <a href="mailto:contact@nghive.app">contact@nghive.app</a>.</p>
+
+  <h2>Pas d'inscription</h2>
+  <p>Sparrows n'a pas de comptes au sens habituel. Tu ne nous donnes jamais d'adresse e-mail ni de mot de passe. À sa première ouverture, l'app crée sur notre serveur une identité anonyme pour ce téléphone, et la clé correspondante est conservée dans le stockage sécurisé de ton téléphone — le Keychain sur iPhone, le Keystore sur Android. Dans la famille, tu es un <em>membre</em> — un prénom et un avatar que tu choisis toi-même.</p>
+  <p>Sur iPhone, tu peux, si tu le souhaites, associer Sign in with Apple pour protéger ton profil. Dans ce cas, nous recevons <strong>uniquement l'identifiant stable d'Apple</strong> lié à ton Apple ID — ni ton nom, ni ton adresse e-mail, ni quoi que ce soit d'autre. Il sert à ce que tu puisses récupérer ton profil sur un nouveau téléphone.</p>
+
+  <h2>Ce qui est enregistré sur notre serveur</h2>
+  <table>
+    <tr><th>Quoi</th><th>Pourquoi</th></tr>
+    <tr><td>Le nom de la famille et sa date de création</td><td>Pour réunir tout le monde et décompter les 14 jours gratuits</td></tr>
+    <tr><td>Pour chaque membre : le prénom et l'avatar choisis, le rôle (parent ou enfant), la langue, le fuseau horaire, les heures calmes, le solde de points et si les notifications sont activées ou non sur ce téléphone</td><td>Pour afficher la famille, appeler chacun par son prénom, envoyer les rappels à des heures raisonnables et permettre à un parent de voir que les notifications d'un enfant sont désactivées</td></tr>
+    <tr><td>Les tâches : titre, détails, échéance, fréquence des rappels, points, statut, qui l'a donnée et qui doit la faire</td><td>C'est l'app elle-même</td></tr>
+    <tr><td>Les commentaires dans une tâche, et la note jointe quand une tâche est terminée ou renvoyée à refaire</td><td>Pour que la discussion sur une tâche reste avec la tâche</td></tr>
+    <tr><td>Les photos jointes comme preuve (facultatives, jusqu'à 5 Mo chacune)</td><td>Pour montrer que c'est fait. Conservées dans un stockage privé que seule ta famille peut lire</td></tr>
+    <tr><td>Les récompenses, leur prix en points et l'historique des points gagnés ou dépensés</td><td>Pour faire fonctionner les récompenses</td></tr>
+    <tr><td>Les codes d'invitation</td><td>Pour permettre aux gens de rejoindre la famille ; ils expirent d'eux-mêmes</td></tr>
+    <tr><td>Le jeton push de l'appareil et sa plateforme</td><td>Pour distribuer les notifications</td></tr>
+    <tr><td>L'identifiant stable d'Apple, seulement si tu as associé Sign in with Apple</td><td>Pour restaurer ton profil sur un nouveau téléphone</td></tr>
+    <tr><td>Pour un achat : le numéro de reçu de la boutique (l'identifiant de transaction d'Apple ou le numéro de commande Google Play), l'identifiant du produit et s'il s'agissait d'un achat de test ou d'un achat réel</td><td>Pour confirmer que la famille est débloquée et restaurer l'achat plus tard</td></tr>
+    <tr><td>Si tu colles dans une tâche un lien de liste de courses provenant de notre app ShopPing, ce lien est enregistré avec la tâche</td><td>Pour que la tâche puisse ouvrir la liste</td></tr>
+  </table>
+  <p>Le serveur est <strong>Supabase</strong>, hébergé aux États-Unis. Tout transite par des connexions chiffrées.</p>
+
+  <h2>Ce que nous ne collectons jamais</h2>
+  <ul>
+    <li>Pas d'identifiants publicitaires, pas de régies publicitaires, pas de SDK publicitaires — il n'y a pas de pub dans l'app.</li>
+    <li>Pas de SDK d'analyse ni de rapports de plantage. Nous ne savons pas combien de fois tu ouvres l'app ni ce que tu touches.</li>
+    <li>Pas de localisation, pas de contacts, pas de calendrier, pas de micro.</li>
+    <li>Pas d'adresses e-mail, de mots de passe ni de numéros de téléphone.</li>
+    <li>L'accès à l'appareil photo et aux photos n'est demandé que lorsque tu joins une photo à une tâche, et seule la photo que tu choisis est envoyée.</li>
+  </ul>
+
+  <h2>Sur ton téléphone</h2>
+  <p>La clé de ton identité anonyme se trouve dans le stockage sécurisé de ton téléphone (Keychain sur iPhone, Keystore sur Android). L'app conserve aussi un petit journal technique sur l'appareil pour faciliter l'assistance ; il reste sur ton téléphone, sauf si tu décides de nous l'envoyer.</p>
+
+  <h2>Notifications</h2>
+  <p>Une notification contient le prénom de la personne qui a donné ou terminé la tâche, ainsi que le titre de la tâche — le même texte que tu verrais dans l'app. Comme elle peut s'afficher sur l'écran verrouillé, penses-y quand tu donnes un nom à une tâche délicate.</p>
+  <p>Les notifications passent par <strong>le service push d'Expo</strong>, puis par <strong>le service Apple Push Notification</strong> sur iPhone ou par <strong>Firebase Cloud Messaging de Google</strong> sur Android. Les notifications non distribuées sont retirées de notre file d'attente au bout de sept jours.</p>
+
+  <h2>Qui peut voir quoi</h2>
+  <ul>
+    <li><strong>Une tâche est privée par défaut.</strong> Seules la personne qui l'a donnée et les personnes à qui elle a été donnée peuvent la voir — pas les autres parents, sauf si son auteur active le partage. Les enfants ont aussi cet interrupteur.</li>
+    <li>Ces règles sont appliquées par la base de données elle-même, et pas seulement masquées dans l'interface.</li>
+    <li>Tout le monde dans la famille voit les membres de la famille, leurs prénoms, leurs avatars et leurs soldes de points, ainsi que la liste des récompenses.</li>
+    <li>Personne en dehors de ta famille ne peut voir quoi que ce soit de tout cela. Nous ne lisons pas vos tâches, et elles ne nous intéressent pas.</li>
+  </ul>
+
+  <h2>Enfants</h2>
+  <p>Sparrows est conçue pour les familles et doit être configurée par un parent, qui invite ensuite les enfants. La fiche d'un enfant contient uniquement le prénom et l'avatar choisis pour lui, ses tâches, ses points et les éventuelles photos qu'il joint. Il n'y a ni profilage, ni publicité, ni marketing visant qui que ce soit, enfants compris, et personne en dehors de leur famille ne peut contacter les enfants par l'intermédiaire de l'app.</p>
+  <p>Un parent peut retirer un enfant de la famille à tout moment ; cela supprime les tâches, les points et les photos de l'enfant. Si tu penses que des données d'un enfant nous sont parvenues d'une manière que tu ne souhaitais pas, écris à <a href="mailto:contact@nghive.app">contact@nghive.app</a> et nous les supprimerons.</p>
+
+  <h2>Supprimer tes données</h2>
+  <ul>
+    <li><strong>Quitte la famille</strong> (Réglages → Quitter la famille), et ta fiche de membre, tes tâches et tes points sont supprimés.</li>
+    <li><strong>Un parent qui retire un membre</strong> supprime les données de cette personne de la même façon.</li>
+    <li>Quand le <strong>dernier membre part</strong>, la famille elle-même est supprimée, avec ses tâches, ses photos, ses récompenses et son historique.</li>
+    <li>Ou écris-nous simplement, et nous supprimerons la famille pour toi.</li>
+  </ul>
+  <p>Nous conservons ensuite la trace d'un achat, car la boutique la rattache à ton Apple ID ou à ton compte Google, et c'est ce qui te permet de restaurer l'achat plus tard.</p>
+
+  <h2>Qui d'autre intervient</h2>
+  <ul>
+    <li><strong>Supabase</strong> — base de données, stockage privé des fichiers et fonctions serveur, aux États-Unis.</li>
+    <li><strong>Expo</strong> — relaie les notifications push vers Apple et Google.</li>
+    <li><strong>Apple</strong> — sur iPhone : distribue les notifications, gère les achats et fournit Sign in with Apple si tu l'utilises.</li>
+    <li><strong>Google</strong> — sur Android : distribue les notifications via Firebase Cloud Messaging et gère les achats via Google Play. Notre serveur demande à Google Play de confirmer chaque achat Android avant de débloquer la famille.</li>
+  </ul>
+  <p>C'est la liste complète. Aucune société de publicité ou d'analyse n'y figure.</p>
+
+  <h2>Tes droits</h2>
+  <p>Demande-nous quelles données nous détenons sur toi, demande-en une copie ou demande-nous de les supprimer : <a href="mailto:contact@nghive.app">contact@nghive.app</a>. Comme nous ne détenons aucune adresse e-mail, écris-nous depuis une adresse à laquelle nous pouvons répondre, et indique-nous le nom de la famille et ton prénom dans l'app pour que nous puissions retrouver les bonnes données.</p>
+
+  <h2>Modifications</h2>
+  <p>Si cette politique change, la date en haut de la page change aussi. Si une modification est importante, nous le signalerons dans l'app.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Sparrows · une app de <a href="https://nghive.app/">NG Hive</a></span>
+    <span><a href="./">Accueil</a> · <a href="terms">Conditions d'utilisation</a> · <a href="mailto:contact@nghive.app">contact@nghive.app</a></span>
+  </div>
+</footer>
+</body>
+</html>

@@ -48,14 +48,62 @@ footer{background:#1B2A3A;color:#D7E3F0;padding:34px 0;font-size:.92rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 footer a{color:#fff}
 </style>
+<link rel="alternate" hreflang="en" href="https://sparrows.nghive.app/terms">
+<link rel="alternate" hreflang="es" href="https://sparrows.nghive.app/es/terms">
+<link rel="alternate" hreflang="de" href="https://sparrows.nghive.app/de/terms">
+<link rel="alternate" hreflang="fr" href="https://sparrows.nghive.app/fr/terms">
+<link rel="alternate" hreflang="ru" href="https://sparrows.nghive.app/ru/terms">
+<link rel="alternate" hreflang="pt" href="https://sparrows.nghive.app/pt/terms">
+<link rel="alternate" hreflang="x-default" href="https://sparrows.nghive.app/terms">
+<style>
+  /* long words on narrow screens */
+  h1, h2 { hyphens: auto; overflow-wrap: break-word; }
+  .top .bar span { min-width: 0; text-align: right; line-height: 1.25; }
+  /* language picker */
+  .lang-pick { position: relative; flex: none; }
+  .lang-pick summary {
+    list-style: none; cursor: pointer; user-select: none;
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 6px 10px; border: 1px solid rgba(27,27,31,.10); border-radius: 999px;
+    font: 700 12px/1.2 inherit; letter-spacing: .06em; color: var(--ink);
+  }
+  .lang-pick summary::-webkit-details-marker { display: none; }
+  .lang-pick summary::after { content: ""; width: 5px; height: 5px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: translateY(-2px) rotate(45deg); opacity: .6; }
+  .lang-pick summary:hover, .lang-pick[open] summary { border-color: var(--sky-deep); }
+  .lang-pick ul {
+    position: absolute; right: 0; top: calc(100% + 8px); z-index: 60;
+    margin: 0; padding: 6px; list-style: none; min-width: 150px;
+    background: #fff; border: 1px solid rgba(27,27,31,.10); border-radius: 16px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .16);
+  }
+  .lang-pick li { margin: 0; }
+  .lang-pick a {
+    display: block; padding: 7px 12px; border-radius: calc(16px - 4px);
+    color: var(--ink); text-decoration: none; border: 0; font-weight: 500; font-size: 14.5px; letter-spacing: 0; text-transform: none;
+  }
+  .lang-pick a:hover { background: color-mix(in srgb, var(--sky-deep) 12%, transparent); }
+  .lang-pick a[aria-current] { color: var(--sky-deep); font-weight: 700; }
+</style>
+<script src="lang.js" defer></script>
 </head>
 <body>
 
 <div class="top">
   <div class="wrap">
     <div class="bar">
-      <img src="assets/icon-180.jpg" alt=""><a href="/">Sparrows</a>
-      <span><a href="/">← Back to the site</a></span>
+      <img src="assets/icon-180.jpg" alt=""><a href="./">Sparrows</a>
+      <span><a href="./">← Back to the site</a></span>
+      <details class="lang-pick">
+        <summary aria-label="Language">EN</summary>
+        <ul>
+          <li><a href="terms" lang="en" hreflang="en" aria-current="page">English</a></li>
+          <li><a href="es/terms" lang="es" hreflang="es">Español</a></li>
+          <li><a href="de/terms" lang="de" hreflang="de">Deutsch</a></li>
+          <li><a href="fr/terms" lang="fr" hreflang="fr">Français</a></li>
+          <li><a href="ru/terms" lang="ru" hreflang="ru">Русский</a></li>
+          <li><a href="pt/terms" lang="pt" hreflang="pt">Português</a></li>
+        </ul>
+      </details>
     </div>
     <h1>Terms of Use</h1>
     <p class="updated">Last updated: 29 September 2026</p>
@@ -117,7 +165,7 @@ footer a{color:#fff}
   </ul>
 
   <h2>Ending it</h2>
-  <p>You can leave the family at any time from Settings; that deletes your data as described in the <a href="/privacy">Privacy Policy</a>. We may suspend or end access if these terms are broken.</p>
+  <p>You can leave the family at any time from Settings; that deletes your data as described in the <a href="privacy">Privacy Policy</a>. We may suspend or end access if these terms are broken.</p>
 
   <h2>Changes</h2>
   <p>These terms may change as the app grows. The date at the top shows when they last did, and we will point out anything important inside the app.</p>
@@ -131,7 +179,7 @@ footer a{color:#fff}
 <footer>
   <div class="wrap">
     <span>Sparrows · an app by <a href="https://nghive.app/">NG Hive</a></span>
-    <span><a href="/">Home</a> · <a href="/privacy">Privacy Policy</a> · <a href="mailto:contact@nghive.app">contact@nghive.app</a></span>
+    <span><a href="./">Home</a> · <a href="privacy">Privacy Policy</a> · <a href="mailto:contact@nghive.app">contact@nghive.app</a></span>
   </div>
 </footer>
 </body>
